@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, Box } from "@mui/material";
 
-const ReadOnlyField = ({ label, value, icon }) => (
+const ReadOnlyField = ({ label, value, icon, sx }) => (
   <TextField
     label={label}
     value={value}
@@ -16,6 +16,7 @@ const ReadOnlyField = ({ label, value, icon }) => (
     }}
     variant="outlined"
     sx={{
+      ...sx,
       "& .MuiOutlinedInput-root": {
         "& fieldset": { borderColor: "#E8E8E8" },
         "&:hover fieldset": { borderColor: "#1565c0" },

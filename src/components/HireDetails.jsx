@@ -14,6 +14,7 @@ import { FaTruckMoving } from "react-icons/fa6";
 import { TbCreditCardPay, TbLicense } from "react-icons/tb";
 import PermitCheckForm from "@root/components/forms/PermitCheckForm";
 import DeliveryDateForm from "@root/components/forms/DeliveryDateForm";
+import PaymentForm from "@root/components/forms/PaymentForm";
 
 const steps = [
   {
@@ -43,7 +44,7 @@ const steps = [
   {
     label: "Payment",
     title: "Payment",
-    content: "Complete your booking by making a payment.",
+    content: <PaymentForm />,
     icon: <TbCreditCardPay color="#fff" />,
   },
 ];
