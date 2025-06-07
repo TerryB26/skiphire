@@ -1,17 +1,13 @@
-import React, { useState } from 'react'
-import { BsTrash3 } from "react-icons/bs";
+import { Box } from "@mui/material";
+import CustomAccordion from '@root/components/CustomAccordion';
+import { useState } from 'react';
+import { CiCircleAlert } from "react-icons/ci";
+import { FaTruckMoving } from "react-icons/fa6";
+import { GiConcreteBag, GiPathTile, GiTreeBranch } from "react-icons/gi";
+import { IoMdTrash } from "react-icons/io";
 import { LuConstruction } from "react-icons/lu";
-import { GiTreeBranch } from "react-icons/gi";
 import { PiBiohazardFill } from "react-icons/pi";
 import { SiWeightsandbiases } from "react-icons/si";
-import { GiConcreteBag } from "react-icons/gi";
-import { GiPathTile } from "react-icons/gi";
-import { FaTruckMoving } from "react-icons/fa6";
-import { IoMdTrash } from "react-icons/io";
-import CustomAccordion from '@root/components/CustomAccordion';
-import RequiredField from '../RequiredField';
-import { Stepper, Step, StepLabel, Button, Box, Typography } from "@mui/material";
-import { CiCircleAlert } from "react-icons/ci";
 
 const WasteType = [
     { id: 1, name: 'General Waste', description: 'Everyday household and office rubbish.', icon: <IoMdTrash color="black" /> },

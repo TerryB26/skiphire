@@ -25,7 +25,7 @@ const CustomAccordion = ({ title, description, items, expanded, onChange }) => {
         }}
       >
         <AccordionSummary
-          expandIcon={<MdOutlineExpandCircleDown color="#fff" size={32} />}
+          expandIcon={<MdOutlineExpandCircleDown color="#fff" size={20} />}
           sx={{
             backgroundColor: "#1a1f2e",
             borderBottom: "1px solid #333",

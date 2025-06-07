@@ -1,24 +1,52 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { Stepper, Step, StepLabel, Button, Box, Typography } from "@mui/material";
-import { FaCity } from "react-icons/fa";
-import { BsTrash3 } from "react-icons/bs";
-import { FaTruckMoving } from "react-icons/fa6";
-import { TbLicense } from "react-icons/tb";
-import { BsCalendarDate } from "react-icons/bs";
-import { TbCreditCardPay } from "react-icons/tb";
+import {
+  Box,
+  Button,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
+import SkipTypeForm from "@root/components/forms/SkipTypeForm";
 import WasteTypeForm from "@root/components/forms/WasteTypeForm";
+import { useState } from "react";
+import { BsCalendarDate, BsTrash3 } from "react-icons/bs";
+import { FaTruckMoving } from "react-icons/fa6";
+import { TbCreditCardPay, TbLicense } from "react-icons/tb";
 
 const steps = [
-  { label: "Waste Type", title: "Select Waste Type", content: <WasteTypeForm />, icon: <BsTrash3 color="#fff" /> },
-  { label: "Select Skip", title: "Select Skip Size", content: "Pick the skip size that fits your needs.", icon: <FaTruckMoving color="#fff" /> },
-  { label: "Permit Check", title: "Permit Check", content: "Check if you need a permit for your skip.", icon: <TbLicense color="#fff" /> },
-  { label: "Choose Date", title: "Choose Date", content: "Select your preferred delivery and collection dates.", icon: <BsCalendarDate color="#fff" /> },
-  { label: "Payment", title: "Payment", content: "Complete your booking by making a payment.", icon: <TbCreditCardPay color="#fff" /> }
+  {
+    label: "Waste Type",
+    title: "Select Waste Type",
+    content: <WasteTypeForm />,
+    icon: <BsTrash3 color="#fff" />,
+  },
+  {
+    label: "Select Skip",
+    title: "Select Skip Size",
+    content: <SkipTypeForm />,
+    icon: <FaTruckMoving color="#fff" />,
+  },
+  {
+    label: "Permit Check",
+    title: "Permit Check",
+    content: "Check if you need a permit for your skip.",
+    icon: <TbLicense color="#fff" />,
+  },
+  {
+    label: "Choose Date",
+    title: "Choose Date",
+    content: "Select your preferred delivery and collection dates.",
+    icon: <BsCalendarDate color="#fff" />,
+  },
+  {
+    label: "Payment",
+    title: "Payment",
+    content: "Complete your booking by making a payment.",
+    icon: <TbCreditCardPay color="#fff" />,
+  },
 ];
 
 const HireDetails = () => {
-  const { uuid } = useParams();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => setActiveStep((prev) => prev + 1);
@@ -36,8 +64,8 @@ const HireDetails = () => {
               sx={{
                 ...(activeStep === idx && {
                   color: "#fff !important",
-                  "& .MuiStepLabel-label": { color: "#fff !important" }
-                })
+                  "& .MuiStepLabel-label": { color: "#fff !important" },
+                }),
               }}
             >
               {step.label}
@@ -45,7 +73,7 @@ const HireDetails = () => {
           </Step>
         ))}
       </Stepper>
-        <Box sx={{ mt: 4, textAlign: "center" }}>
+      <Box sx={{ mt: 4, textAlign: "center" }}>
         <Typography variant="h5" gutterBottom sx={{ color: "#fff" }}>
           {currentStep.title}
         </Typography>
@@ -53,7 +81,11 @@ const HireDetails = () => {
           {currentStep.content}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 2 }}>
+          <Button
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            sx={{ mr: 2 }}
+          >
             Back
           </Button>
           <Button
