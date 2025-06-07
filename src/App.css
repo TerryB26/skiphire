@@ -15,7 +15,7 @@
 }
 
 .App-header {
-  min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,4 +39,18 @@
 
 body {
   background-color: #0B132B;
+}
+
+.row-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px; 
+  height: 80vh; 
+}
+
+.column {
+  padding: 24px 32px;
+  min-width: 200px;
+  text-align: center;
 }

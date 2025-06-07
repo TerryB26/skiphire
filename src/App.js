@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import PageHeader from '@root/components/PageHeader';
+import recycling from '@root/animations/recycling.json';
+import recycling2 from '@root/animations/recycling2.json';
+import Lottie from 'lottie-react';
+import LocationForm from '@root/components/forms/LocationForm';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PageHeader title="Skip Hire" />
+      <div className="row-center">
+        <div className="column">
+          <LocationForm />
+        </div>
+        <div className="column">
+          <Lottie animationData={recycling2} style={{ width: "100%", height: "500px" }} />
+        </div>
+      </div>
     </div>
   );
 }
