@@ -13,6 +13,7 @@ import { BsCalendarDate, BsTrash3 } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa6";
 import { TbCreditCardPay, TbLicense } from "react-icons/tb";
 import PermitCheckForm from "@root/components/forms/PermitCheckForm";
+import DeliveryDateForm from "@root/components/forms/DeliveryDateForm";
 
 const steps = [
   {
@@ -36,7 +37,7 @@ const steps = [
   {
     label: "Choose Date",
     title: "Choose Date",
-    content: "Select your preferred delivery and collection dates.",
+    content: <DeliveryDateForm />,
     icon: <BsCalendarDate color="#fff" />,
   },
   {
