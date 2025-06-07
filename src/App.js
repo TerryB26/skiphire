@@ -5,6 +5,7 @@ import Lottie from 'lottie-react';
 import LocationForm from '@root/components/forms/LocationForm';
 import HireDetails from '@root/components/HireDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 
 function App() {
   return (
@@ -19,9 +20,13 @@ function App() {
                 <div className="column">
                   <LocationForm />
                 </div>
-                <div className="column">
-                  <Lottie animationData={recycling2} style={{ width: "100%", height: "500px" }} />
-                </div>
+                {!isMobile && (
+                  <div className="column hide-on-mobile">
+                    <div className="lottie-container">
+                      <Lottie animationData={recycling2} />
+                    </div>
+                  </div>
+                )}
               </div>
             }
           />
