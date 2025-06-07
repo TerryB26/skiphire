@@ -58,15 +58,16 @@ const CustomAccordion = ({ title, description, items, expanded, onChange }) => {
           >
             {description}
           </Box>
-          <Grid container spacing={3} justifyContent="center" alignItems="stretch">
+          <Grid container spacing={3} justifyContent="center" alignItems="stretch" sx={{ flexWrap: "nowrap" }} >
             {items && items.length > 0 ? (
               items.map((item) => (
-                <Grid item xs={12} sm={6} md={3} key={item.id} sx={{ display: "flex" }}>
+                <Grid item xs={12} sm={6} md={items.length === 2 ? 6 : 3} key={item.id} sx={{ display: "flex",flexDirection: "column",minWidth: 0, }}>
                   <Card
                     onClick={() => handleSelect(item.id)}
                     sx={{
                       width: "100%",
                       minHeight: 160,
+                      height: "100%",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "stretch",

@@ -12,6 +12,7 @@ import { useState } from "react";
 import { BsCalendarDate, BsTrash3 } from "react-icons/bs";
 import { FaTruckMoving } from "react-icons/fa6";
 import { TbCreditCardPay, TbLicense } from "react-icons/tb";
+import PermitCheckForm from "@root/components/forms/PermitCheckForm";
 
 const steps = [
   {
@@ -29,7 +30,7 @@ const steps = [
   {
     label: "Permit Check",
     title: "Permit Check",
-    content: "Check if you need a permit for your skip.",
+    content: <PermitCheckForm />,
     icon: <TbLicense color="#fff" />,
   },
   {
