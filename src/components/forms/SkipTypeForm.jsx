@@ -13,7 +13,8 @@ import {
   IoArrowUndoCircleOutline,
 } from "react-icons/io5";
 import { MdOutlineTimer } from "react-icons/md";
-
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import { Divider } from "@mui/material";
 import { IoArrowRedoCircleSharp, IoArrowUndoCircle } from "react-icons/io5";
 
@@ -75,6 +76,9 @@ const SkipTypeForm = () => {
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [selected, setSelected] = useState(null);
+    const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
 
   const handleSelect = (id) => {
     setSelected(id);
@@ -98,7 +102,8 @@ const SkipTypeForm = () => {
         overflow: "hidden",
       }}
     >
-      {start > 0 && (
+      {/* Show icon buttons only on desktop */}
+      {!isMobile && start > 0 && (
         <IconButton
           onClick={handlePrev}
           onMouseEnter={() => setHoverPrev(true)}
@@ -111,43 +116,55 @@ const SkipTypeForm = () => {
           )}
         </IconButton>
       )}
-      <Box
-        sx={{
-          width: `${340 * CARDS_PER_PAGE + 24 * (CARDS_PER_PAGE - 1)}px`,
-          overflow: "hidden",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            gap: 3,
+<Box
+  sx={{
+    width: {
+      xs: "100vw",
+      sm: `${340 * CARDS_PER_PAGE + 24 * (CARDS_PER_PAGE - 1)}px`,
+    },
+    overflowX: { xs: "auto", sm: "hidden" },
+    boxSizing: "border-box",
+  }}
+>
+  <Box
+    sx={{
+      display: "flex",
+      gap: 3,
+      ...(isMobile
+        ? {}
+        : start > 0
+        ? {
             transform: `translateX(-${start * (340 + 24)}px)`,
             transition: "transform 0.5s ease-in-out",
-          }}
-        >
-          {SkipTypes.map((skip) => (
-            <Card
-              key={skip.id}
-              onClick={() => handleSelect(skip.id)}
-              sx={{
-                maxWidth: 400,
-                minWidth: 340,
-                minHeight: 480,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-start",
-                flexShrink: 0,
-                boxShadow:
-                  "4px 4px 12px 0px rgba(128,128,128,0.18), -4px 4px 12px 0px rgba(128,128,128,0.10), 0px 6px 18px 0px rgba(128,128,128,0.20)",
-                p: 0,
-                border:
-                  selected === skip.id
-                    ? "2px solid rgb(255, 0, 0)"
-                    : "2px solid transparent",
-                cursor: "pointer",
-                transition: "border 0.2s",
-              }}
-            >
+          }
+        : {}),
+    }}
+  >
+    {SkipTypes.map((skip, idx) => (
+<Card
+  key={skip.id}
+  onClick={() => handleSelect(skip.id)}
+  sx={{
+    maxWidth: 400,
+    minWidth: 340,
+    minHeight: 480,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    flexShrink: 0,
+    boxShadow:
+      "4px 4px 12px 0px rgba(128,128,128,0.18), -4px 4px 12px 0px rgba(128,128,128,0.10), 0px 6px 18px 0px rgba(128,128,128,0.20)",
+    p: 0,
+    border:
+      selected === skip.id
+        ? "2px solid rgb(255, 0, 0)"
+        : "2px solid transparent",
+    cursor: "pointer",
+    transition: "border 0.s",
+    ml: idx === 0 ? 6 : 0,
+    mr: idx === 2 ? -2 : 0, // <-- Increase right margin for last card
+  }}
+>
               <CardActionArea sx={{ height: "100%" }}>
                 <CardMedia
                   component="img"
@@ -231,7 +248,7 @@ const SkipTypeForm = () => {
           ))}
         </Box>
       </Box>
-      {start + CARDS_PER_PAGE < SkipTypes.length && (
+           {!isMobile && start + CARDS_PER_PAGE < SkipTypes.length && (
         <IconButton
           onClick={handleNext}
           onMouseEnter={() => setHoverNext(true)}
