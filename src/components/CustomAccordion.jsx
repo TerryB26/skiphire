@@ -17,7 +17,8 @@ const CustomAccordion = ({ title, description, items, expanded, onChange }) => {
         expanded={expanded}
         onChange={onChange}
         sx={{
-          width: 1400,
+          width: "100%", 
+          maxWidth: 1400, 
           backgroundColor: "#1a1f2e",
           color: "#fff",
           borderRadius: 5,
@@ -43,6 +44,7 @@ const CustomAccordion = ({ title, description, items, expanded, onChange }) => {
             color: "#000",
             borderBottomLeftRadius: 5,
             borderBottomRightRadius: 5,
+            p: { xs: 1, sm: 2, md: 3 }, 
           }}
         >
           <Box
@@ -54,95 +56,137 @@ const CustomAccordion = ({ title, description, items, expanded, onChange }) => {
               justifyContent: "center",
               alignItems: "center",
               width: "100%",
+              fontSize: { xs: "0.95rem", sm: "1rem" },
+              px: { xs: 1, sm: 0 },
             }}
           >
             {description}
           </Box>
-          <Grid container spacing={3} justifyContent="center" alignItems="stretch" sx={{ flexWrap: "nowrap" }} >
-            {items && items.length > 0 ? (
-              items.map((item) => (
-                <Grid item xs={12} sm={6} md={items.length === 2 ? 6 : 3} key={item.id} sx={{ display: "flex",flexDirection: "column",minWidth: 0, }}>
-                  <Card
-                    onClick={() => handleSelect(item.id)}
+          <Box
+            sx={{
+              width: "100%",
+              overflowX: { xs: "auto", sm: "visible" }, 
+            }}
+          >
+            <Grid
+              container
+              spacing={{ xs: 2, sm: 3 }}
+          justifyContent={{ xs: "flex-start", sm: "center" }}
+              alignItems="stretch"
+              sx={{
+                flexWrap: { xs: "nowrap", sm: "wrap" },
+                minWidth: 0,
+              }}
+            >
+              {items && items.length > 0 ? (
+                items.map((item) => (
+                  <Grid
+                    item
+                    xs={6}
+                    sm={6}
+                    md={items.length <= 2 ? 6 : 3}
+                    key={item.id}
                     sx={{
-                      width: "100%",
-                      minHeight: 160,
-                      height: "100%",
                       display: "flex",
                       flexDirection: "column",
-                      alignItems: "stretch",
-                      justifyContent: "flex-start",
-                      boxShadow: "4px 4px 12px 0 rgba(0, 0, 0, 0.15), -4px 4px 12px 0 rgba(0, 0, 0, 0.1)",
-                      p: 0,
-                      border: selected.includes(item.id)
-                        ? "2px solid #11243f"
-                        : "2px solid transparent",
-                      cursor: "pointer",
-                      transition: "border 0.2s",
+                      minWidth: { xs: 180, sm: 0 }, 
+                      maxWidth: "100%",
+                      flex: "0 0 auto",
+                      mb: { xs: 2, sm: 0 },
                     }}
                   >
-                    <Box
+                    <Card
+                      onClick={() => handleSelect(item.id)}
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        p: 2,
-                        pb: 1,
-                        backgroundColor: "rgba(58,80,107,0.4)",
-                        borderTopLeftRadius: 4,
-                        borderTopRightRadius: 4,
-                      }}
-                    >
-                      <Box sx={{ mr: 1, fontSize: 28, display: "flex", alignItems: "center" }}>
-                        {item.icon}
-                      </Box>
-                      <Typography
-                        variant="subtitle1"
-                        sx={{
-                          fontWeight: 600,
-                          color: "#fff",
-                          textAlign: "center",
-                          width: "100%",
-                        }}
-                      >
-                        {item.name}
-                      </Typography>
-                    </Box>
-                    <Divider />
-                    <Box
-                      sx={{
-                        p: 2,
-                        pt: 1,
+                        width: "100%",
+                        minHeight: { xs: 120, sm: 160 },
+                        height: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%",
+                        alignItems: "stretch",
+                        justifyContent: "flex-start",
+                        boxShadow:
+                          "4px 4px 12px 0 rgba(0, 0, 0, 0.15), -4px 4px 12px 0 rgba(0, 0, 0, 0.1)",
+                        p: 0,
+                        border: selected.includes(item.id)
+                          ? "2px solid #11243f"
+                          : "2px solid transparent",
+                        cursor: "pointer",
+                        transition: "border 0.2s",
                       }}
                     >
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
+                      <Box
                         sx={{
-                          wordBreak: "break-word",
-                          textAlign: "center",
-                          fontWeight: "bold",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          p: 2,
+                          pb: 1,
+                          backgroundColor: "rgba(58,80,107,0.4)",
+                          borderTopLeftRadius: 4,
+                          borderTopRightRadius: 4,
                         }}
                       >
-                        {item.description}
-                      </Typography>
-                    </Box>
-                  </Card>
+                        <Box
+                          sx={{
+                            mr: 1,
+                            fontSize: { xs: 22, sm: 28 },
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          {item.icon}
+                        </Box>
+                        <Typography
+                          variant="subtitle1"
+                          sx={{
+                            fontWeight: 600,
+                            color: "#fff",
+                            textAlign: "center",
+                            width: "100%",
+                            fontSize: { xs: "1rem", sm: "1.1rem" },
+                          }}
+                        >
+                          {item.name}
+                        </Typography>
+                      </Box>
+                      <Divider />
+                      <Box
+                        sx={{
+                          p: 2,
+                          pt: 1,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          height: "100%",
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{
+                            wordBreak: "break-word",
+                            textAlign: "center",
+                            fontWeight: "bold",
+                            fontSize: { xs: "0.95rem", sm: "1rem" },
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+                      </Box>
+                    </Card>
+                  </Grid>
+                ))
+              ) : (
+                <Grid item xs={12}>
+                  <Typography variant="body2" color="text.secondary">
+                    No items available.
+                  </Typography>
                 </Grid>
-              ))
-            ) : (
-              <Grid item xs={12}>
-                <Typography variant="body2" color="text.secondary">
-                  No items available.
-                </Typography>
-              </Grid>
-            )}
-          </Grid>
+              )}
+            </Grid>
+          </Box>
         </AccordionDetails>
       </Accordion>
     </Box>
