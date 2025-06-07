@@ -9,13 +9,13 @@ const SkipLocation = [
     { 
         id: 1, 
         name: 'Private Property', 
-        description: 'The skip will be placed on your own land, such as a driveway or garden. No permit required.', 
+        description: 'The skip will be placed on your own land.', 
         icon: <BsHouseDoorFill color="black" /> 
     },
     { 
         id: 2, 
         name: 'Public Road', 
-        description: 'The skip will be placed on a public road or pavement. A permit from the local council is required.', 
+        description: 'The skip will be placed on a public road or pavement. ', 
         icon: <FaRoad color="black" /> 
     },
 ];

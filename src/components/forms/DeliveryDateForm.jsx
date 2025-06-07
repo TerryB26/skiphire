@@ -14,70 +14,61 @@ const DeliveryDateForm = () => {
 
   return (
     <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
-        <Box sx={{ width: '100%', textAlign: 'center', mb: 0, color: '#E8E8E8' }}>
+      <Box sx={{ width: '100%', textAlign: 'center', mb: 0, color: '#E8E8E8' }}>
         Select your preferred skip delivery date. We'll aim to deliver between 7am and 6pm on your chosen day.
-        </Box>
-      <Grid item xs={12} md={6}>
+      </Box>
+      <Grid item xs={12} sm={10} md={6}>
         <Box
           sx={{
-            maxWidth: 1000,
+            maxWidth: { xs: 360, sm: 500, md: 1000 },
             margin: '0 auto',
             background: '#f5f5f5',
             borderRadius: 2,
-            p: 2,
+            p: { xs: 1, sm: 2 },
           }}
         >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1, fontWeight: 'bold' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1, fontWeight: 'bold', color: 'black'}}>
                 <BsCalendarDate style={{ marginRight: 8 }} />
                 Delivery Date
               </Box>
               <Box sx={{ textAlign: 'center', mb: 2, color: '#888' }}>
                 We'll deliver your skip on this date. Please ensure access is available.
-            </Box>
+              </Box>
               <StaticDatePicker
-                orientation="landscape"
                 value={deliveryDate}
                 onChange={setDeliveryDate}
-                slotProps={{
-                  paperContent: {
-                    sx: { backgroundColor: 'transparent', boxShadow: 'none' }
-                  }
-                }}
+
               />
             </Box>
           </LocalizationProvider>
         </Box>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} sm={10} md={6}>
         <Box
           sx={{
-            maxWidth: 1000,
+            maxWidth: { xs: 360, sm: 500, md: 1000 },
             margin: '0 auto',
             background: '#f5f5f5',
             borderRadius: 2,
-            p: 2,
+            p: { xs: 1, sm: 2 },
+            mt: { xs: 2, md: 0 },
           }}
         >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1, fontWeight: 'bold' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1, fontWeight: 'bold' , color: 'black'}}>
                 <BsFillCalendarDateFill style={{ marginRight: 8 }} />
                 Collection Date
               </Box>
-                <Box sx={{ textAlign: 'center', mb: 2, color: '#888' }}>
-                    We'll collect your skip on this date. Please ensure it's accessible.
-                </Box>
+              <Box sx={{ textAlign: 'center', mb: 2, color: '#888' }}>
+                We'll collect your skip on this date. Please ensure it's accessible.
+              </Box>
               <StaticDatePicker
-                orientation="landscape"
                 value={collectionDate}
                 onChange={setCollectionDate}
-                slotProps={{
-                  paperContent: {
-                    sx: { backgroundColor: 'transparent', boxShadow: 'none' }
-                  }
-                }}
+
               />
             </Box>
           </LocalizationProvider>
