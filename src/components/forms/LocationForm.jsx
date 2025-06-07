@@ -5,21 +5,30 @@ import {
   TextField,
   Box,
   Grid,
+  Button,
 } from "@mui/material";
 import { IoSearchOutline } from "react-icons/io5";
 import { SiOpenstreetmap } from "react-icons/si";
 import { LuMapPinHouse } from "react-icons/lu";
 import ReadOnlyField from "@root/components/ReadOnlyField";
 import { FaCity } from "react-icons/fa";
-import { fetchLocations } from "../dummyDB/locationsDb"; // <-- import fetchLocations
+import { fetchLocations } from "../dummyDB/locationsDb";
+import { useNavigate } from "react-router-dom";
 
 const LocationForm = () => {
   const [selected, setSelected] = useState(null);
   const [locations, setLocations] = useState([]);
+const navigate = useNavigate();
 
   useEffect(() => {
     fetchLocations().then(setLocations);
   }, []);
+
+const handleProceed = () => {
+  if (selected && selected.uuid) {
+    navigate(`/hire-details/${selected.uuid}`);
+  }
+};
 
   return (
     <Box component="form" sx={{ width: "100%" }}>
@@ -105,6 +114,16 @@ const LocationForm = () => {
                         value={selected.houseFlatNumber}
                         icon={<LuMapPinHouse color="#fff" />}
                       />
+                    </Grid>
+                    <Grid item xs={12} sx={{ mt: 2 }}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleProceed}
+                        fullWidth
+                      >
+                        Proceed
+                      </Button>
                     </Grid>
                   </Grid>
                 </Box>
