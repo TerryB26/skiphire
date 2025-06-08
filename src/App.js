@@ -6,6 +6,7 @@ import LocationForm from '@root/components/forms/LocationForm';
 import HireDetails from '@root/components/HireDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { isMobile } from 'react-device-detect';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

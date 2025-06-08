@@ -15,6 +15,7 @@ import { TbCreditCardPay, TbLicense } from "react-icons/tb";
 import PermitCheckForm from "@root/components/forms/PermitCheckForm";
 import DeliveryDateForm from "@root/components/forms/DeliveryDateForm";
 import PaymentForm from "@root/components/forms/PaymentForm";
+import { TiArrowBackOutline,TiArrowForwardOutline  } from "react-icons/ti";
 
 const steps = [
   {
@@ -84,17 +85,41 @@ const HireDetails = () => {
           {currentStep.content}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Button
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          variant="outlined"
+          startIcon={<TiArrowBackOutline />}
+          sx={{
+            mr: 2,
+            borderColor: "#E3F2FD",
+            color: "#E3F2FD",
+            minWidth: 100, // Stretches the button width
+            "&:hover": {
+              borderColor: "#1976D2",
+              color: "#1976D2",
+              backgroundColor: "transparent",
+            },
+          }}
+        >
+          Back
+        </Button>
           <Button
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            sx={{ mr: 2 }}
-          >
-            Back
-          </Button>
-          <Button
-            variant="contained"
             onClick={handleNext}
             disabled={activeStep === steps.length - 1}
+            variant="outlined"
+            endIcon={<TiArrowForwardOutline  />}
+            sx={{
+              mr: 2,
+              borderColor: "#90CAF9",
+              color: "#90CAF9",
+              minWidth: 100, // Stretches the button width
+              "&:hover": {
+                borderColor: "#1976D2",
+                color: "#1976D2",
+                backgroundColor: "transparent",
+              },
+            }}
           >
             Next
           </Button>
