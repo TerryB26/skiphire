@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ItemsSlider from "@root/components/ItemsSlider";
-import waste2 from "@root/images/waste2.png";
+import waste2 from "../../images/waste2.png";
 import { GrMoney } from "react-icons/gr";
 import { MdOutlineTimer } from "react-icons/md";
 

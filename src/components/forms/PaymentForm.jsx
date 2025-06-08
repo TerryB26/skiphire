@@ -13,7 +13,7 @@ import { FaCreditCard, FaUser, FaLock, FaCity } from "react-icons/fa";
 import { SiOpenstreetmap } from "react-icons/si";
 import { LuMapPinHouse } from "react-icons/lu";
 import { useNavigate, useParams } from "react-router-dom";
-import waste1 from "@root/images/waste1.png";
+import waste1 from "../../images/waste1.png";
 import { fetchLocations } from "../dummyDB/locationsDb";
 
 const Checkout = () => {
